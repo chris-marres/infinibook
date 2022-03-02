@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:infinibook_flutter/models/user.dart';
+import 'package:infinibook_flutter/models/dummy_data.dart';
 import 'package:infinibook_flutter/widgets/profile_widget.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -12,7 +13,7 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
-    const user = UserPreferences.myUser;
+    User user = DummyData.users[1];
 
     return Scaffold(
       appBar: AppBar(

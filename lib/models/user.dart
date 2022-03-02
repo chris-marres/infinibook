@@ -2,11 +2,11 @@ class User {
   final String imagePath;
   final String name;
   final String email;
-  final int books;
-  final int followers;
-  final int following;
+  int books;
+  int followers;
+  int following;
 
-  const User({
+  User({
     required this.imagePath,
     required this.name,
     required this.email,
@@ -14,15 +14,4 @@ class User {
     required this.followers,
     required this.following,
   });
-}
-
-class UserPreferences {
-  static const myUser = User(
-    imagePath: 'assets/images/chris_500.jpeg',
-    name: 'Chris Marres',
-    email: 'xristos.marres@gmail.com',
-    books: 2,
-    followers: 3,
-    following: 4,
-  );
 }

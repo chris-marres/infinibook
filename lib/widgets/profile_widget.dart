@@ -53,9 +53,9 @@ class NumbersWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           buildButton(context, books.toString(), 'Books'),
-          buildDivider(),
+          buildDivider(context),
           buildButton(context, followers.toString(), 'Followers'),
-          buildDivider(),
+          buildDivider(context),
           buildButton(context, following.toString(), 'Following'),
         ],
       ),
@@ -84,8 +84,10 @@ class NumbersWidget extends StatelessWidget {
     );
   }
 
-  Widget buildDivider() => Container(
-        height: 24,
-        child: const VerticalDivider(thickness: 1),
-      );
+  Widget buildDivider(BuildContext context) {
+    return Container(
+      height: 24,
+      child: const VerticalDivider(thickness: 1),
+    );
+  }
 }
