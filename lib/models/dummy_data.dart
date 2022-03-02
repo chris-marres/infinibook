@@ -13,7 +13,7 @@ class DummyData {
         imagePath: 'assets/images/chris_500.jpeg',
         name: 'Chris Marres',
         email: 'xristos.marres@gmail.com',
-        books: 10,
+        books: 100,
         followers: 20,
         following: 30),
     User(
