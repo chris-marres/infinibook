@@ -16,7 +16,7 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
-    User user = globals.dummyData.users[1];
+    User user = globals.dummyData.users[0];
 
     var scaffold = Scaffold(
       appBar: AppBar(

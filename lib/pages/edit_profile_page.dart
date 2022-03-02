@@ -15,7 +15,7 @@ class EditProfilePage extends StatefulWidget {
 }
 
 class _EditProfilePageState extends State<EditProfilePage> {
-  User user = globals.dummyData.users[1];
+  User user = globals.dummyData.users[0];
 
   @override
   Widget build(BuildContext context) => ThemeSwitchingArea(
