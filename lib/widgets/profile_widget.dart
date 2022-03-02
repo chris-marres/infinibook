@@ -35,19 +35,30 @@ class ProfileWidget extends StatelessWidget {
 }
 
 class NumbersWidget extends StatelessWidget {
-  const NumbersWidget({Key? key}) : super(key: key);
+  final int books;
+  final int followers;
+  final int following;
+
+  const NumbersWidget({
+    Key? key,
+    required this.books,
+    required this.followers,
+    required this.following,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        buildButton(context, '8', 'Books'),
-        buildDivider(),
-        buildButton(context, '50', 'Followers'),
-        buildDivider(),
-        buildButton(context, '150', 'Following'),
-      ],
+    return IntrinsicHeight(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          buildButton(context, books.toString(), 'Books'),
+          buildDivider(),
+          buildButton(context, followers.toString(), 'Followers'),
+          buildDivider(),
+          buildButton(context, following.toString(), 'Following'),
+        ],
+      ),
     );
   }
 

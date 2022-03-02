@@ -29,7 +29,11 @@ class _ProfilePageState extends State<ProfilePage> {
               size: 100,
             ),
           ),
-          NumbersWidget(),
+          NumbersWidget(
+            books: user.books,
+            followers: user.followers,
+            following: user.following,
+          ),
         ],
       ),
     );
