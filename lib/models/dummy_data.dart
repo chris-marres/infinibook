@@ -1,7 +1,7 @@
 import 'package:infinibook_flutter/models/user.dart';
 
 class DummyData {
-  static List<User> users = [
+  List<User> users = [
     User(
         imagePath: 'assets/images/chris_500.jpeg',
         name: 'Chris Marres',

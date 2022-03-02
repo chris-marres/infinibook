@@ -5,6 +5,7 @@ import 'package:infinibook_flutter/widgets/profile_widget.dart';
 import 'package:infinibook_flutter/widgets/appbar_widget.dart';
 import 'package:infinibook_flutter/widgets/textfield_widget.dart';
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
+import '../globals.dart' as globals;
 
 class EditProfilePage extends StatefulWidget {
   const EditProfilePage({Key? key}) : super(key: key);
@@ -14,7 +15,7 @@ class EditProfilePage extends StatefulWidget {
 }
 
 class _EditProfilePageState extends State<EditProfilePage> {
-  User user = DummyData.users[0];
+  User user = globals.dummyData.users[1];
 
   @override
   Widget build(BuildContext context) => ThemeSwitchingArea(
