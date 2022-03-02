@@ -2,22 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:infinibook_flutter/pages/profile_page.dart';
 import 'package:infinibook_flutter/pages/search_page.dart';
 import 'package:infinibook_flutter/pages/messages_page.dart';
+import 'package:infinibook_flutter/pages/edit_profile_page.dart';
+import 'package:animated_theme_switcher/animated_theme_switcher.dart';
+import 'package:infinibook_flutter/themes.dart';
 
 void main() => runApp(const Infinibook());
 
 class Infinibook extends StatelessWidget {
   const Infinibook({Key? key}) : super(key: key);
+  final title = 'Welcome to Infinibook';
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Welcome to Infinibook',
-      theme: ThemeData(
-        dividerColor: Colors.black,
-        primarySwatch: Colors.deepPurple,
+    return ThemeProvider(
+      initTheme: MyThemes.lightTheme,
+      child: Builder(
+        builder: (context) => MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: Theme.of(context),
+          title: title,
+          home: const InfinibookMainPage(),
+        ),
       ),
-      home: const InfinibookMainPage(),
     );
   }
 }
@@ -32,14 +38,16 @@ class InfinibookMainPage extends StatefulWidget {
 class _InfinibookMainPageState extends State<InfinibookMainPage> {
   int currentIndex = 0;
   final pages = [
+    //const EditProfilePage(),
     const ProfilePage(),
     const SearchPage(),
     const MessagesPage(),
+    //const EditProfilePage(),
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    var scaffold = Scaffold(
       body: IndexedStack(
         index: currentIndex,
         children: pages,
@@ -63,6 +71,18 @@ class _InfinibookMainPageState extends State<InfinibookMainPage> {
             label: 'Messages',
           ),
         ],
+      ),
+    );
+
+    //ThemeSwitchingArea(
+    //    child: Builder(
+    //      builder: (context) => Scaffold(
+    //        appBar: buildAppBar(context),
+    //        body: ListView(
+
+    return ThemeSwitchingArea(
+      child: Builder(
+        builder: (context) => scaffold,
       ),
     );
   }

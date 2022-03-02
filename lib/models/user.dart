@@ -1,6 +1,6 @@
 class User {
   final String imagePath;
-  final String name;
+  String name;
   final String email;
   int books;
   int followers;

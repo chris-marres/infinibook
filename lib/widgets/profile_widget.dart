@@ -4,12 +4,16 @@ class ProfileWidget extends StatelessWidget {
   final String imagePath;
   final VoidCallback onClicked;
   final double size;
+  final bool isEdit;
+  final bool noIcon;
 
   const ProfileWidget({
     Key? key,
     required this.imagePath,
     required this.onClicked,
     required this.size,
+    this.isEdit = false,
+    this.noIcon = false,
   }) : super(key: key);
 
   @override
@@ -20,7 +24,7 @@ class ProfileWidget extends StatelessWidget {
       child: Stack(
         children: [
           buildImage(context, imagePath, size),
-          buildEditIcon(color),
+          !noIcon ? buildEditIcon(color) : const SizedBox.shrink(),
         ],
       ),
     );
@@ -54,8 +58,8 @@ class ProfileWidget extends StatelessWidget {
         child: buildCircle(
           color: color,
           all: 6,
-          child: const Icon(
-            Icons.edit,
+          child: Icon(
+            isEdit ? Icons.add_a_photo : Icons.edit,
             color: Colors.white,
             size: 20,
           ),
