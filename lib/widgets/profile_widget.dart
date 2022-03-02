@@ -14,24 +14,68 @@ class ProfileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //final color = Theme.of(context).colorScheme.primary;
-    final image = AssetImage(imagePath);
+    final color = Theme.of(context).colorScheme.primary;
 
     return Center(
-      child: ClipOval(
-        child: Material(
-          color: Colors.transparent,
-          child: Ink.image(
-            image: image,
-            width: size,
-            height: size,
-            fit: BoxFit.cover,
-            child: InkWell(onTap: onClicked),
+      child: Stack(
+        children: [
+          buildImage(context, imagePath, size),
+          buildEditIcon(color),
+        ],
+      ),
+    );
+  }
+
+  //!!!! This widget need to be inside a Center Widget to work properly !!!!
+  Widget buildImage(BuildContext context, String imagePath, double size) {
+    final image = AssetImage(imagePath);
+
+    return ClipOval(
+      child: Material(
+        color: Colors.transparent,
+        child: Ink.image(
+          image: image,
+          width: size,
+          height: size,
+          fit: BoxFit.cover,
+          child: InkWell(onTap: onClicked),
+        ),
+      ),
+    );
+  }
+
+  Widget buildEditIcon(Color color) {
+    return Positioned(
+      bottom: 0,
+      right: 4,
+      child: buildCircle(
+        color: Colors.white,
+        all: 3,
+        child: buildCircle(
+          color: color,
+          all: 6,
+          child: const Icon(
+            Icons.edit,
+            color: Colors.white,
+            size: 20,
           ),
         ),
       ),
     );
   }
+
+  Widget buildCircle({
+    required Widget child,
+    required double all,
+    required Color color,
+  }) =>
+      ClipOval(
+        child: Container(
+          padding: EdgeInsets.all(all),
+          color: color,
+          child: child,
+        ),
+      );
 }
 
 class NumbersWidget extends StatelessWidget {
@@ -86,7 +130,7 @@ class NumbersWidget extends StatelessWidget {
 
   Widget buildDivider(BuildContext context) {
     return Container(
-      height: 24,
+      height: 30,
       child: const VerticalDivider(thickness: 1),
     );
   }
