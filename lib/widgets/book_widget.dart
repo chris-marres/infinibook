@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 
 class BookWidget extends StatelessWidget {
   final String imagePath;
-  final VoidCallback onClicked;
   final double width;
   final double height;
 
   const BookWidget({
     Key? key,
     required this.imagePath,
-    required this.onClicked,
     required this.height,
     required this.width,
   }) : super(key: key);
@@ -25,7 +23,7 @@ class BookWidget extends StatelessWidget {
           height: height,
           fit: BoxFit.cover,
           child: InkWell(
-            onTap: onClicked,
+            onTap: () {},
           ),
         ),
       ),

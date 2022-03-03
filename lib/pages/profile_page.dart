@@ -28,7 +28,6 @@ class _ProfilePageState extends State<ProfilePage> {
         for (var j = 0; j < 3; j++) {
           row.add(BookWidget(
               imagePath: user.booksList[index].imagePath,
-              onClicked: () {},
               height: 200,
               width: 120));
           row.add(spacer);
@@ -39,7 +38,6 @@ class _ProfilePageState extends State<ProfilePage> {
         for (var j = 0; j < remaining; j++) {
           row.add(BookWidget(
               imagePath: user.booksList[index].imagePath,
-              onClicked: () {},
               height: 200,
               width: 120));
           row.add(spacer);

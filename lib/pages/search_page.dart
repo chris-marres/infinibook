@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:infinibook_flutter/models/dummy_data.dart';
+import 'package:infinibook_flutter/models/user.dart';
+import 'package:infinibook_flutter/widgets/book_widget.dart';
+import 'package:infinibook_flutter/widgets/profile_widget.dart';
+import 'package:animated_theme_switcher/animated_theme_switcher.dart';
+//import 'package:infinibook_flutter/models/dummy_data.dart';
+import '../globals.dart' as globals;
 
 class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);
@@ -11,7 +16,7 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    var scaffold = Scaffold(
         appBar: AppBar(title: const Text('Search'), actions: <Widget>[
       IconButton(
           icon: Icon(Icons.search),
@@ -19,6 +24,12 @@ class _SearchPageState extends State<SearchPage> {
             showSearch(context: context, delegate: DataSearch());
           })
     ]));
+
+    return ThemeSwitchingArea(
+      child: Builder(
+        builder: (context) => scaffold,
+      ),
+    );
   }
 }
 
@@ -51,14 +62,92 @@ class DataSearch extends SearchDelegate<String> {
 
   @override
   Widget buildSuggestions(BuildContext context) {
+    List<User> temp = [];
+
+    for (var i = 0; i < globals.dummyData.users.length; i++) {
+      User user = globals.dummyData.users[i];
+      for (var j = 0; j < globals.dummyData.users[i].booksList.length; j++) {
+        temp.add(User(
+          imagePath: user.imagePath,
+          name: user.name,
+          email: user.email,
+          books: user.books,
+          followers: user.followers,
+          following: user.following,
+          booksList: [
+            user.booksList[j],
+          ],
+        ));
+      }
+    }
+
     final suggestionList = query.isEmpty
-        ? DummyData.books
-        : DummyData.books.where((p) => p.name.startsWith(query)).toList();
+        ? temp
+        : temp.where((p) => p.booksList[0].name.startsWith(query)).toList();
+
+    //return ListView.builder(
+    //    itemBuilder: (context, index) => ListTile(
+    //        leading: BookWidget(
+    //          imagePath: suggestionList[index].booksList[0].imagePath,
+    //          onClicked: () {},
+    //          height: 100,
+    //          width: 100,
+    //        ),
+    //        title: RichText(
+    //            text: TextSpan(text: suggestionList[index].booksList[0].name))),
+    //    itemCount: suggestionList.length);
 
     return ListView.builder(
-        itemBuilder: (context, index) => ListTile(
-            leading: Icon(Icons.picture_in_picture),
-            title: RichText(text: TextSpan(text: suggestionList[index].name))),
-        itemCount: suggestionList.length);
+      itemBuilder: (context, index) => Column(
+        children: [
+          const SizedBox(height: 20),
+          Row(
+            children: [
+              BookWidget(
+                imagePath: suggestionList[index].booksList[0].imagePath,
+                height: 200,
+                width: 120,
+              ),
+              Spacer(),
+              Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      const SizedBox(width: 10),
+                      ProfileWidget(
+                        imagePath: suggestionList[index].imagePath,
+                        onClicked: () {},
+                        size: 60,
+                        noIcon: true,
+                      ),
+                      const SizedBox(width: 15),
+                      Text(suggestionList[index].name),
+                    ],
+                  ),
+                  const SizedBox(height: 40),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      SizedBox(
+                        width: 200,
+                        child: Text(
+                          suggestionList[index].booksList[0].name,
+                          style: const TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              Spacer(),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }
