@@ -6,4 +6,4 @@ DummyData dummyData = DummyData();
 int pageIndex = 0;
 
 // ignore: non_constant_identifier_names
-int loged_in_user = 7;
+int loged_in_user = 0;
