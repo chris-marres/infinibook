@@ -29,10 +29,14 @@ class _ProfilePageState extends State<ProfilePage> {
             padding: const EdgeInsets.all(22),
             child: ProfileWidget(
               imagePath: user.imagePath,
-              onClicked: () {
-                Navigator.of(context).push(
+              onClicked: () async {
+                EditItems temp = await Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => EditProfilePage()),
                 );
+                if (temp.name != '' || temp.email != '') {
+                  globals.dummyData.users[0].name = temp.name;
+                  globals.dummyData.users[0].email = temp.email;
+                }
               },
               size: 100,
             ),

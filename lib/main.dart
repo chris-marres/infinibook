@@ -5,6 +5,7 @@ import 'package:infinibook_flutter/pages/messages_page.dart';
 import 'package:infinibook_flutter/pages/edit_profile_page.dart';
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:infinibook_flutter/themes.dart';
+import '../globals.dart' as globals;
 
 void main() => runApp(const Infinibook());
 
@@ -36,7 +37,7 @@ class InfinibookMainPage extends StatefulWidget {
 }
 
 class _InfinibookMainPageState extends State<InfinibookMainPage> {
-  int currentIndex = 0;
+  //int currentIndex = globals.pageIndex;
   final pages = [
     //const EditProfilePage(),
     const ProfilePage(),
@@ -49,14 +50,14 @@ class _InfinibookMainPageState extends State<InfinibookMainPage> {
   Widget build(BuildContext context) {
     var scaffold = Scaffold(
       body: IndexedStack(
-        index: currentIndex,
+        index: globals.pageIndex,
         children: pages,
       ),
       bottomNavigationBar: BottomNavigationBar(
         //type: BottomNavigationBarType.fixed,
         showUnselectedLabels: false,
-        currentIndex: currentIndex,
-        onTap: (index) => setState(() => currentIndex = index),
+        currentIndex: globals.pageIndex,
+        onTap: (index) => setState(() => globals.pageIndex = index),
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle),
@@ -73,12 +74,6 @@ class _InfinibookMainPageState extends State<InfinibookMainPage> {
         ],
       ),
     );
-
-    //ThemeSwitchingArea(
-    //    child: Builder(
-    //      builder: (context) => Scaffold(
-    //        appBar: buildAppBar(context),
-    //        body: ListView(
 
     return ThemeSwitchingArea(
       child: Builder(

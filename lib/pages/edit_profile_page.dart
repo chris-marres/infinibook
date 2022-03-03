@@ -16,6 +16,8 @@ class EditProfilePage extends StatefulWidget {
 
 class _EditProfilePageState extends State<EditProfilePage> {
   User user = globals.dummyData.users[0];
+  String tempName = globals.dummyData.users[0].name;
+  String tempEmail = globals.dummyData.users[0].email;
 
   @override
   Widget build(BuildContext context) => ThemeSwitchingArea(
@@ -36,17 +38,45 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 TextFieldWidget(
                   label: 'Username',
                   text: user.name,
-                  onChanged: (name) {},
+                  onChanged: (name) {
+                    tempName = name;
+                  },
                 ),
                 const SizedBox(height: 24),
                 TextFieldWidget(
                   label: 'Email',
                   text: user.email,
-                  onChanged: (email) {},
+                  onChanged: (email) {
+                    tempEmail = email;
+                  },
+                ),
+                FloatingActionButton(
+                  onPressed: () {
+                    Navigator.pop(
+                      context,
+                      EditItems(
+                        name: tempName,
+                        email: tempEmail,
+                      ),
+                    );
+                  },
+                  tooltip: 'Save',
+                  child: const Icon(Icons.add),
+                  heroTag: null,
                 ),
               ],
             ),
           ),
         ),
       );
+}
+
+class EditItems {
+  String name = '';
+  String email = '';
+
+  EditItems({
+    required this.name,
+    required this.email,
+  });
 }
