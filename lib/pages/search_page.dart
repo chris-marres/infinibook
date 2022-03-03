@@ -98,13 +98,15 @@ class DataSearch extends SearchDelegate<String> {
     //    itemCount: suggestionList.length);
 
     return ListView.builder(
+      itemCount: suggestionList.length,
+      physics: const BouncingScrollPhysics(),
       itemBuilder: (context, index) => Column(
         children: [
           const SizedBox(height: 20),
           Row(
             children: [
               BookWidget(
-                imagePath: suggestionList[index].booksList[0].imagePath,
+                book: suggestionList[index].booksList[0],
                 height: 200,
                 width: 120,
               ),

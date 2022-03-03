@@ -26,20 +26,16 @@ class _ProfilePageState extends State<ProfilePage> {
       if (i < rowNumber - 1) {
         row.add(spacer);
         for (var j = 0; j < 3; j++) {
-          row.add(BookWidget(
-              imagePath: user.booksList[index].imagePath,
-              height: 200,
-              width: 120));
+          row.add(
+              BookWidget(book: user.booksList[index], height: 200, width: 120));
           row.add(spacer);
           index++;
         }
       } else {
         row.add(spacer);
         for (var j = 0; j < remaining; j++) {
-          row.add(BookWidget(
-              imagePath: user.booksList[index].imagePath,
-              height: 200,
-              width: 120));
+          row.add(
+              BookWidget(book: user.booksList[index], height: 200, width: 120));
           row.add(spacer);
           index++;
         }

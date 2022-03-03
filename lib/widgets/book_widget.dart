@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:infinibook_flutter/pages/book_page.dart';
+import 'package:infinibook_flutter/models/book.dart';
 
 class BookWidget extends StatelessWidget {
-  final String imagePath;
+  final Book book;
   final double width;
   final double height;
+  bool inBookPage;
 
-  const BookWidget({
+  BookWidget({
     Key? key,
-    required this.imagePath,
+    required this.book,
     required this.height,
     required this.width,
+    this.inBookPage = false,
   }) : super(key: key);
 
   @override
@@ -18,12 +22,22 @@ class BookWidget extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: Ink.image(
-          image: AssetImage(imagePath),
+          image: AssetImage(book.imagePath),
           width: width,
           height: height,
           fit: BoxFit.cover,
           child: InkWell(
-            onTap: () {},
+            onTap: () {
+              if (!inBookPage) {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                      builder: (context) => BookPage(
+                            book: book,
+                            dontFork: true,
+                          )),
+                );
+              }
+            },
           ),
         ),
       ),
