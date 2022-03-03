@@ -133,6 +133,7 @@ class NumbersWidget extends StatelessWidget {
   }
 
   Widget buildDivider(BuildContext context) {
+    // ignore: sized_box_for_whitespace
     return Container(
       height: 30,
       child: const VerticalDivider(thickness: 1),

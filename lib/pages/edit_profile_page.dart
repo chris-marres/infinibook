@@ -14,9 +14,9 @@ class EditProfilePage extends StatefulWidget {
 }
 
 class _EditProfilePageState extends State<EditProfilePage> {
-  User user = globals.dummyData.users[0];
-  String tempName = globals.dummyData.users[0].name;
-  String tempEmail = globals.dummyData.users[0].email;
+  User user = globals.dummyData.users[globals.loged_in_user];
+  String tempName = globals.dummyData.users[globals.loged_in_user].name;
+  String tempEmail = globals.dummyData.users[globals.loged_in_user].email;
 
   @override
   Widget build(BuildContext context) => ThemeSwitchingArea(
