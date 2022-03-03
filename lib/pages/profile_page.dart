@@ -1,7 +1,6 @@
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:infinibook_flutter/models/user.dart';
-import 'package:infinibook_flutter/models/dummy_data.dart';
 import 'package:infinibook_flutter/widgets/profile_widget.dart';
 import 'package:infinibook_flutter/pages/edit_profile_page.dart';
 import '../globals.dart' as globals;
@@ -31,7 +30,8 @@ class _ProfilePageState extends State<ProfilePage> {
               imagePath: user.imagePath,
               onClicked: () async {
                 EditItems temp = await Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => EditProfilePage()),
+                  MaterialPageRoute(
+                      builder: (context) => const EditProfilePage()),
                 );
                 if (temp.name != '' || temp.email != '') {
                   globals.dummyData.users[0].name = temp.name;

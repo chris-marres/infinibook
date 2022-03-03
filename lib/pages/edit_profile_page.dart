@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:infinibook_flutter/models/user.dart';
-import 'package:infinibook_flutter/models/dummy_data.dart';
 import 'package:infinibook_flutter/widgets/profile_widget.dart';
 import 'package:infinibook_flutter/widgets/appbar_widget.dart';
 import 'package:infinibook_flutter/widgets/textfield_widget.dart';
@@ -51,21 +50,27 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   },
                 ),
                 const SizedBox(height: 24),
-                FloatingActionButton(
-                  onPressed: () {
-                    Navigator.pop(
-                      context,
-                      EditItems(
-                        name: tempName,
-                        email: tempEmail,
-                      ),
-                    );
-                  },
-                  tooltip: 'Save',
-                  child: const Icon(Icons.add),
-                  heroTag: null,
+                Center(
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      elevation: 10,
+                      textStyle: const TextStyle(fontSize: 20),
+                      shape: const StadiumBorder(),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 25, vertical: 15),
+                    ),
+                    onPressed: () {
+                      Navigator.pop(
+                        context,
+                        EditItems(
+                          name: tempName,
+                          email: tempEmail,
+                        ),
+                      );
+                    },
+                    child: const Text('Save'),
+                  ),
                 ),
-                const SizedBox(height: 24),
               ],
             ),
           ),

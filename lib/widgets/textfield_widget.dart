@@ -6,7 +6,7 @@ class TextFieldWidget extends StatefulWidget {
   final String text;
   final ValueChanged<String> onChanged;
 
-  TextFieldWidget({
+  const TextFieldWidget({
     Key? key,
     this.maxLines = 1,
     required this.label,
@@ -41,7 +41,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
         children: [
           Text(
             widget.label,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
           ),
           const SizedBox(height: 8),
           TextField(

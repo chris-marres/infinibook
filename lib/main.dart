@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:infinibook_flutter/pages/profile_page.dart';
 import 'package:infinibook_flutter/pages/search_page.dart';
 import 'package:infinibook_flutter/pages/messages_page.dart';
-import 'package:infinibook_flutter/pages/edit_profile_page.dart';
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:infinibook_flutter/themes.dart';
 import '../globals.dart' as globals;
