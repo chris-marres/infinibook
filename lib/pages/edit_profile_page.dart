@@ -50,6 +50,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     tempEmail = email;
                   },
                 ),
+                const SizedBox(height: 24),
                 FloatingActionButton(
                   onPressed: () {
                     Navigator.pop(
@@ -64,6 +65,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   child: const Icon(Icons.add),
                   heroTag: null,
                 ),
+                const SizedBox(height: 24),
               ],
             ),
           ),
