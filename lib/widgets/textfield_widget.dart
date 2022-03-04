@@ -5,6 +5,7 @@ class TextFieldWidget extends StatefulWidget {
   final String label;
   final String text;
   final ValueChanged<String> onChanged;
+  final bool disable;
 
   const TextFieldWidget({
     Key? key,
@@ -12,6 +13,7 @@ class TextFieldWidget extends StatefulWidget {
     required this.label,
     required this.text,
     required this.onChanged,
+    this.disable = false,
   }) : super(key: key);
 
   @override
@@ -45,11 +47,16 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
           ),
           const SizedBox(height: 8),
           TextField(
+            enabled: !widget.disable,
             onChanged: widget.onChanged,
             controller: controller,
             decoration: InputDecoration(
+              disabledBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(width: 2),
+                  borderRadius: BorderRadius.circular(15)),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
+                borderSide: const BorderSide(width: 3),
+                borderRadius: BorderRadius.circular(15),
               ),
             ),
             maxLines: widget.maxLines,

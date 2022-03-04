@@ -19,7 +19,7 @@ class _SearchPageState extends State<SearchPage> {
     var scaffold = Scaffold(
         appBar: AppBar(title: const Text('Search'), actions: <Widget>[
       IconButton(
-          icon: Icon(Icons.search),
+          icon: const Icon(Icons.search),
           onPressed: () {
             showSearch(context: context, delegate: DataSearch());
           })
@@ -41,7 +41,7 @@ class DataSearch extends SearchDelegate<String> {
           onPressed: () {
             query = "";
           },
-          icon: Icon(Icons.clear))
+          icon: const Icon(Icons.clear))
     ];
   }
 
@@ -57,7 +57,7 @@ class DataSearch extends SearchDelegate<String> {
 
   @override
   Widget buildResults(BuildContext context) {
-    return Center();
+    return const Center();
   }
 
   @override
@@ -110,7 +110,7 @@ class DataSearch extends SearchDelegate<String> {
                 height: 200,
                 width: 120,
               ),
-              Spacer(),
+              const Spacer(),
               Column(
                 children: [
                   Row(
@@ -145,7 +145,7 @@ class DataSearch extends SearchDelegate<String> {
                   ),
                 ],
               ),
-              Spacer(),
+              const Spacer(),
             ],
           ),
         ],

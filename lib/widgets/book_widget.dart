@@ -6,9 +6,9 @@ class BookWidget extends StatelessWidget {
   final Book book;
   final double width;
   final double height;
-  bool inBookPage;
+  final bool inBookPage;
 
-  BookWidget({
+  const BookWidget({
     Key? key,
     required this.book,
     required this.height,
