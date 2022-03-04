@@ -3,7 +3,7 @@ import 'package:infinibook_flutter/models/user.dart';
 import 'package:infinibook_flutter/widgets/book_widget.dart';
 import 'package:infinibook_flutter/widgets/profile_widget.dart';
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
-//import 'package:infinibook_flutter/models/dummy_data.dart';
+import 'package:infinibook_flutter/pages/others_profile_page.dart';
 import '../globals.dart' as globals;
 
 class SearchPage extends StatefulWidget {
@@ -119,7 +119,13 @@ class DataSearch extends SearchDelegate<String> {
                       const SizedBox(width: 10),
                       ProfileWidget(
                         imagePath: suggestionList[index].imagePath,
-                        onClicked: () {},
+                        onClicked: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => OthersProfilePage(
+                                    user: suggestionList[index])),
+                          );
+                        },
                         size: 60,
                         noIcon: true,
                       ),
