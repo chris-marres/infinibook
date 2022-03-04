@@ -3,7 +3,7 @@ class Book {
   final String name;
   final String author;
   final String language;
-  final List<String> genres;
+  final String genres;
   final int pages;
 
   Book({

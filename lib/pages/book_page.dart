@@ -22,7 +22,7 @@ class _BookPageState extends State<BookPage> {
       child: Builder(
         builder: (context) => Scaffold(
           appBar: AppBar(
-            title: Text(widget.book.name),
+            title: const Text('Book Page'),
           ),
           body: ListView(
             physics: const BouncingScrollPhysics(),
@@ -52,9 +52,10 @@ class _BookPageState extends State<BookPage> {
               ),
               const SizedBox(height: 8),
               TextFieldWidget(
+                maxLines: 2,
                 disable: true,
                 label: 'Genres',
-                text: widget.book.genres[0],
+                text: widget.book.genres,
                 onChanged: (value) {},
               ),
               const SizedBox(height: 8),
