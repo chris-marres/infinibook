@@ -10,7 +10,7 @@ void main() => runApp(const Infinibook());
 
 class Infinibook extends StatelessWidget {
   const Infinibook({Key? key}) : super(key: key);
-  final title = 'Welcome to Infinibook';
+  final title = 'Infinibook';
 
   @override
   Widget build(BuildContext context) {
